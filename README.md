@@ -1,4 +1,19 @@
-# [TCTrack]
+# TCTrack: Temporal Contexts for Aerial Tracking
+
+
+
+
+## Abstract
+Temporal contexts among consecutive frames are far
+from been fully utilized in existing visual trackers. In this work, we present TCTrack1, a comprehensive framework to fully exploit temporal contexts for aerial tracking. The temporal contexts are incorporated at two levels: the extraction of features and the refinement of similarity maps. Specifically, for feature extraction, an online temporally adaptive convolution is proposed to enhance the spatial features using temporal information, which is achieved by dynamically calibrating the convolution weights according to the previous frames. For similarity map refinement, we propose an adaptive temporal transformer, which first effectively encodes
+temporal knowledge in a memory-efficient way, before
+the temporal knowledge is decoded for accurate adjustment
+of the similarity map. TCTrack is effective and efficient:
+evaluation on four aerial tracking benchmarks shows
+its impressive performance; real-world UAV tests show its
+high speed of over 27 FPS on NVIDIA Jetson AGX Xavier.
+
+![Workflow of our tracker](https://github.com/vision4robotics/TCTrack/images/workflow.jpg)
 
 ## 1. Environment setup
 This code has been tested on Ubuntu 18.04, Python 3.8.3, Pytorch 0.7.0/1.6.0, CUDA 10.2.
