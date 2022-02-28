@@ -15,7 +15,7 @@ high speed of over 27 FPS on NVIDIA Jetson AGX Xavier.
 
 ![Workflow of our tracker](https://github.com/vision4robotics/TCTrack/blob/main/images/workflow.jpg)
 
-[![demo](https://github.com/vision4robotics/TCTrack/blob/main/images/workflow.jpg)](https://youtu.be/wcR3iCFJN4E "demo")
+
 
 ## 1. Environment setup
 This code has been tested on Ubuntu 18.04, Python 3.8.3, Pytorch 0.7.0/1.6.0, CUDA 10.2.
@@ -71,3 +71,16 @@ python eval.py 	                          \
 
 
 **Note:** The code is implemented based on [pysot](https://github.com/STVIR/pysot). We would like to express our sincere thanks to the contributors.
+
+## Demo video
+[![TCTrack](https://res.cloudinary.com/marcomontalbano/image/upload/v1646040242/video_to_markdown/images/youtube--wcR3iCFJN4E-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/wcR3iCFJN4E "TCTrack")
+
+## References 
+
+```
+
+
+```
+
+## Acknowledgement
+The code is implemented based on [pysot](https://github.com/STVIR/pysot). We would like to express our sincere thanks to the contributors.
