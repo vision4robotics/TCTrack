@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Single Object Tracking Evaluation')
     parser.add_argument('--dataset_dir', default='',type=str, help='dataset root directory')
-    parser.add_argument('--dataset', default='UAV10',type=str, help='dataset name')
+    parser.add_argument('--dataset', default='UAV123_10fps',type=str, help='dataset name')
     parser.add_argument('--tracker_result_dir',default='', type=str, help='tracker result root')
     parser.add_argument('--trackers',default='general_model', nargs='+')
     parser.add_argument('--vis', default='',dest='vis', action='store_true')
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     assert len(trackers) > 0
     args.num = min(args.num, len(trackers))
 
-    if 'UAV10' in args.dataset:
+    if 'UAV123_10fps' in args.dataset:
         dataset = UAV10Dataset(args.dataset, root)
         dataset.set_tracker(tracker_dir, trackers)
         benchmark = OPEBenchmark(dataset)

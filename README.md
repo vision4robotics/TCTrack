@@ -35,9 +35,9 @@ Download [pretrained model](https://pan.baidu.com/s/1jSAcHY9OfarVlxKjOCrVEw) （
 Download testing datasets and put them into `test_dataset` directory. 
 
 ```bash 
-python test.py                                \
-	--dataset UAV10fps                      \ # 
-    --dataset_name
+python ./tools/test.py                                \
+	--dataset UAV123_10fps                      \ # 
+    --dataset_name TCTrack
 	--snapshot snapshot/general_model.pth  # tracker_name
 ```
 The testing result will be saved in the `results/dataset_name/tracker_name` directory.
@@ -75,7 +75,7 @@ python eval.py 	                          \
 ```
 
 
-**Note:** The code is implemented based on [pysot](https://github.com/STVIR/pysot). We would like to express our sincere thanks to the contributors.
+**Note:** The code is implemented based on [pysot-toolkit](https://github.com/StrangerZhang/pysot-toolkit). We would like to express our sincere thanks to the contributors.
 
 ## Demo video
 [![TCTrack](https://res.cloudinary.com/marcomontalbano/image/upload/v1646040242/video_to_markdown/images/youtube--wcR3iCFJN4E-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/wcR3iCFJN4E "TCTrack")
