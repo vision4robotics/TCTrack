@@ -6,7 +6,7 @@
 
 ## Abstract
 Temporal contexts among consecutive frames are far
-from been fully utilized in existing visual trackers. In this work, we present TCTrack1, a comprehensive framework to fully exploit temporal contexts for aerial tracking. The temporal contexts are incorporated at two levels: the extraction of features and the refinement of similarity maps. Specifically, for feature extraction, an online temporally adaptive convolution is proposed to enhance the spatial features using temporal information, which is achieved by dynamically calibrating the convolution weights according to the previous frames. For similarity map refinement, we propose an adaptive temporal transformer, which first effectively encodes
+from being fully utilized in existing visual trackers. In this work, we present TCTrack1, a comprehensive framework to fully exploit temporal contexts for aerial tracking. The temporal contexts are incorporated at two levels: the extraction of features and the refinement of similarity maps. Specifically, for feature extraction, an online temporally adaptive convolution is proposed to enhance the spatial features using temporal information, which is achieved by dynamically calibrating the convolution weights according to the previous frames. For similarity map refinement, we propose an adaptive temporal transformer, which first effectively encodes
 temporal knowledge in a memory-efficient way, before
 the temporal knowledge is decoded for accurate adjustment
 of the similarity map. TCTrack is effective and efficient:
@@ -17,7 +17,7 @@ high speed of over 27 FPS on NVIDIA Jetson AGX Xavier.
 ![Workflow of our tracker](https://github.com/vision4robotics/TCTrack/blob/main/images/workflow.jpg)
 
 
-The implementation of our online temporally adaptive convolution is based on [TadaConv](https://github.com/alibaba-mmai-research/TAdaConv) ICLR2022.
+The implementation of our online temporally adaptive convolution is based on [TadaConv](https://github.com/alibaba-mmai-research/TAdaConv) (ICLR2022).
 
 
 ## 1. Environment setup
@@ -81,7 +81,12 @@ python eval.py 	                          \
 ## References 
 
 ```
-
+@article{cao2022tctrack,
+  title={{TCTrack: Temporal Contexts for Aerial Tracking}},
+  author={Ziang Cao and Ziyuan Huang and Liang Pan and Shiwei Zhang and Ziwei Liu and Changhong Fu},
+  journal={arXiv preprint arXiv:2203.01885},
+  year={2022}
+}
 
 ```
 
