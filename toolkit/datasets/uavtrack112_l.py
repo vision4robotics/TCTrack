@@ -10,7 +10,7 @@ from .dataset import Dataset
 from .video import Video
 
 def ca():
-    path='./test_dataset/UAVTrack112'
+    path='./test_dataset/UAVTrack112_l'
     namefile=os.listdir(path+'/anno_l')
     namefile.sort()
     

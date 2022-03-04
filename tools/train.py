@@ -94,7 +94,7 @@ def build_opt_lr(model, current_epoch=0):
                           'lr': cfg.BACKBONE.LAYERS_LR * cfg.TRAIN.BASE_LR}]
     
 
-    trainable_params += [{'params': model.TCT.parameters(),
+    trainable_params += [{'params': model.grader.parameters(),
                           'lr': cfg.TRAIN.BASE_LR}]
     
     optimizer = torch.optim.SGD(trainable_params,

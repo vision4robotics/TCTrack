@@ -26,9 +26,9 @@ class ModelBuilder(nn.Module):
         self.backbone = TemporalAlexNet().cuda()
         
         if label=='test':
-            self.TCT=TCTtest(cfg).cuda()
+            self.grader=TCTtest(cfg).cuda()
         else:
-            self.TCT=TCT(cfg).cuda()
+            self.grader=TCT(cfg).cuda()
         self.cls3loss=nn.BCEWithLogitsLoss()
         self.IOULOSS=IOULoss()
 
@@ -39,7 +39,7 @@ class ModelBuilder(nn.Module):
 
             xf,xfeat1,xfeat2 = self.backbone.init(x)   
             
-            ppres=self.TCT.conv1(self.xcorr_depthwise(xf,zf))
+            ppres=self.grader.conv1(self.xcorr_depthwise(xf,zf))
 
             self.memory=ppres
             self.featset1=xfeat1
@@ -62,7 +62,7 @@ class ModelBuilder(nn.Module):
             
             xf,xfeat1,xfeat2 = self.backbone.eachtest(x,self.featset1,self.featset2)  
                         
-            loc,cls2,cls3,memory=self.TCT(xf,self.zf,self.memory)
+            loc,cls2,cls3,memory=self.grader(xf,self.zf,self.memory)
                         
             self.memory=memory
             self.featset1=xfeat1
@@ -137,7 +137,7 @@ class ModelBuilder(nn.Module):
         xf = self.backbone(presearch) ###b l c w h
         xf=xf.view(cfg.TRAIN.BATCH_SIZE//cfg.TRAIN.NUM_GPU,cfg.TRAIN.videorange+1,xf.size(-3),xf.size(-2),xf.size(-1))
         
-        loc,cls2,cls3=self.TCT(xf[:,-1,:,:,:],zf,xf[:,:-1,:,:,:].permute(1,0,2,3,4))
+        loc,cls2,cls3=self.grader(xf[:,-1,:,:,:],zf,xf[:,:-1,:,:,:].permute(1,0,2,3,4))
 
        
         cls2 = self.log_softmax(cls2) 

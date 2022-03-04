@@ -22,9 +22,11 @@ from toolkit.datasets import DatasetFactory
 parser = argparse.ArgumentParser(description='TCTrack tracking')
 parser.add_argument('--dataset', default='UAV123',type=str,
         help='datasets')
-parser.add_argument('--config', default='./../experiments/config.yaml', type=str,
-        help='config file')
-parser.add_argument('--snapshot', default='./snapshot/tctrack.pth', type=str,
+parser.add_argument('--config', default='./experiments/config.yaml', type=str,
+        help='config file1')
+parser.add_argument('--config_l', default='./experiments/config_l.yaml', type=str,
+        help='config file2')
+parser.add_argument('--snapshot', default='./tools/snapshot/tctrack.pth', type=str,
         help='snapshot of models to eval')
 parser.add_argument('--video', default='', type=str,
         help='eval one special video')
@@ -36,7 +38,10 @@ torch.set_num_threads(1)
 
 def main():
 # load config
-    cfg.merge_from_file(args.config)
+    if args.dataset in ['UAV123','UAV123_10fps','DTB70']:
+        cfg.merge_from_file(args.config)
+	else:
+	    cfg.merge_from_file(args.config_l)
 
     cur_dir = os.path.dirname(os.path.realpath(__file__))
     dataset_root = os.path.join(cur_dir, '../test_dataset', args.dataset)
@@ -55,7 +60,7 @@ def main():
                                             dataset_root=dataset_root,
                                             load_img=False)
 
-    model_name = args.snapshot.split('/')[-1].split('.')[0]+str(cfg.TRACK.w1)
+    model_name = args.snapshot.split('/')[-1].split('.')[0]
 
     for v_idx, video in enumerate(dataset):
         if args.video != '':

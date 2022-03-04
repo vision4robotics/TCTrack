@@ -166,7 +166,7 @@ class SubDataset(object):
             
             
         current=self.get_image_anno(video_name, track, template_frame), \
-            self.get_image_anno(video_name, track, search_frame),\
+            self.get_image_anno(video_name, track, search_frame)
         previous=[]
         
         for item in serrange:

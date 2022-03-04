@@ -159,32 +159,32 @@ __C.DATASET.GRAY = 0.0
 __C.DATASET.NAMES = ('VID', 'COCO', 'GOT', 'LaSOT','YOUTUBEBB')
 
 __C.DATASET.VID = CN()
-__C.DATASET.VID.ROOT = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/vid/crop511'
-__C.DATASET.VID.ANNO = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/vid/train.json'
+__C.DATASET.VID.ROOT = './train_dataset/vid/crop511'
+__C.DATASET.VID.ANNO = './train_dataset/vid/train.json'
 __C.DATASET.VID.FRAME_RANGE = 50 #100
 __C.DATASET.VID.NUM_USE = 100000  # repeat until reach NUM_USE
 
 __C.DATASET.YOUTUBEBB = CN()
-__C.DATASET.YOUTUBEBB.ROOT = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/yt_bb/crop511'
-__C.DATASET.YOUTUBEBB.ANNO = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/yt_bb/train.json'
+__C.DATASET.YOUTUBEBB.ROOT = './train_dataset/yt_bb/crop511'
+__C.DATASET.YOUTUBEBB.ANNO = './train_dataset/yt_bb/train.json'
 __C.DATASET.YOUTUBEBB.FRAME_RANGE = 3
 __C.DATASET.YOUTUBEBB.NUM_USE = -1  # use all not repeat
 
 __C.DATASET.COCO = CN()
-__C.DATASET.COCO.ROOT = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/coco/crop511'
-__C.DATASET.COCO.ANNO = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/coco/train2017.json'
+__C.DATASET.COCO.ROOT = './train_dataset/coco/crop511'
+__C.DATASET.COCO.ANNO = './train_dataset/coco/train2017.json'
 __C.DATASET.COCO.FRAME_RANGE = 1
 __C.DATASET.COCO.NUM_USE = -1
 
 __C.DATASET.LaSOT = CN()
-__C.DATASET.LaSOT.ROOT = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/lasot/crop511'         # LaSOT dataset path
-__C.DATASET.LaSOT.ANNO = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/lasot/train.json'
+__C.DATASET.LaSOT.ROOT = './train_dataset/lasot/crop511'         # LaSOT dataset path
+__C.DATASET.LaSOT.ANNO = './train_dataset/lasot/train.json'
 __C.DATASET.LaSOT.FRAME_RANGE = 50 #100
 __C.DATASET.LaSOT.NUM_USE = 100000
 
 __C.DATASET.GOT = CN()
-__C.DATASET.GOT.ROOT = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/got10k/crop511'         # GOT dataset path
-__C.DATASET.GOT.ANNO = '/home/tj-v4r/Documents/caoziang/tran-master/train_dataset/got10k/train.json'
+__C.DATASET.GOT.ROOT = './train_dataset/got10k/crop511'         # GOT dataset path
+__C.DATASET.GOT.ANNO = './train_dataset/got10k/train.json'
 __C.DATASET.GOT.FRAME_RANGE = 50
 __C.DATASET.GOT.NUM_USE = 100000
 
