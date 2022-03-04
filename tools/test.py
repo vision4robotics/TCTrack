@@ -24,6 +24,8 @@ parser.add_argument('--dataset', default='UAV123',type=str,
         help='datasets')
 parser.add_argument('--config', default='./experiments/config.yaml', type=str,
         help='config file1')
+parser.add_argument('--tracker_name', default='TCTrack', type=str,
+        help='tracker name')
 parser.add_argument('--config_l', default='./experiments/config_l.yaml', type=str,
         help='config file2')
 parser.add_argument('--snapshot', default='./tools/snapshot/tctrack.pth', type=str,
@@ -60,7 +62,7 @@ def main():
                                             dataset_root=dataset_root,
                                             load_img=False)
 
-    model_name = args.snapshot.split('/')[-1].split('.')[0]
+    model_name = args.tracker_name
 
     for v_idx, video in enumerate(dataset):
         if args.video != '':

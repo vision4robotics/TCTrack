@@ -35,10 +35,10 @@ Download [pretrained model](https://pan.baidu.com/s/1jSAcHY9OfarVlxKjOCrVEw) （
 Download testing datasets and put them into `test_dataset` directory. 
 
 ```bash 
-python ./tools/test.py                                \
-	--dataset UAV123_10fps                      \ # 
-    --dataset_name TCTrack
-	--snapshot snapshot/general_model.pth  # tracker_name
+python ./tools/test.py                                
+	--dataset UAV123_10fps                  
+    --tracker_name TCTrack
+	--snapshot snapshot/general_model.pth # pre-train model path
 ```
 The testing result will be saved in the `results/dataset_name/tracker_name` directory.
 
