@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ```
 
 ## 2. Test
-Download [pretrained model](https://pan.baidu.com/s/1jSAcHY9OfarVlxKjOCrVEw) （code: 2u1l) and put it into `tools/snapshot` directory.
+Download pretrained model by [Baidu](https://pan.baidu.com/s/1jSAcHY9OfarVlxKjOCrVEw) （code: 2u1l) or [Googledrive](https://drive.google.com/file/d/1nWRfvAEcSduR9A4W5MpyZBjp0SCjvmNk/view?usp=sharing) and put it into `tools/snapshot` directory.
 
 Download testing datasets and put them into `test_dataset` directory. 
 
