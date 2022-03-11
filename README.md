@@ -85,7 +85,7 @@ python eval.py 	                          \
 ```
 @article{cao2022tctrack,
   title={{TCTrack: Temporal Contexts for Aerial Tracking}},
-  author={Ziang Cao and Ziyuan Huang and Liang Pan and Shiwei Zhang and Ziwei Liu and Changhong Fu},
+  author={Cao, Ziang and Huang, Ziyuan and Pan, Liang and Zhang, Shiwei and Liu, Ziwei and Fu, Changhong},
   journal={arXiv preprint arXiv:2203.01885},
   year={2022}
 }
