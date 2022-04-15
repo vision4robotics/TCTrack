@@ -11,22 +11,13 @@ class TCT(nn.Module):
         super(TCT, self).__init__()
 
 
-        self.conv = nn.Sequential(
-            nn.Conv2d(384, 192, kernel_size=3, bias=False, stride=2,padding=1),
-            nn.BatchNorm2d(192),
-            nn.ReLU(inplace=True),
-            )
-        self.conv3 = nn.Sequential(
-            nn.Conv2d(384, 192, kernel_size=3, bias=False, stride=2,padding=1),
-            nn.BatchNorm2d(192),
-            nn.ReLU(inplace=True),
-            )
-        self.conv2 = nn.Sequential(
+
+        self.conv1 = nn.Sequential(
             nn.Conv2d(256, 192, kernel_size=3, bias=False, stride=2,padding=1),
             nn.BatchNorm2d(192),
             nn.ReLU(inplace=True),
             )
-        self.conv1 = nn.Sequential(
+        self.conv2 = nn.Sequential(
             nn.Conv2d(256, 192, kernel_size=3, bias=False, stride=2,padding=1),
             nn.BatchNorm2d(192),
             nn.ReLU(inplace=True),
@@ -67,7 +58,6 @@ class TCT(nn.Module):
                 )
 
         self.transformer = Transformertime(channel, 6, 1, 2)
-        self.baseembed=nn.Parameter(t.randn(1,192,11,11)).cuda()
         
         self.cls1=nn.Conv2d(channel, 2,  kernel_size=3, stride=1,padding=1)
         self.cls2=nn.Conv2d(channel, 1,  kernel_size=3, stride=1,padding=1)
@@ -75,7 +65,6 @@ class TCT(nn.Module):
             for l in modules.modules():
                 if isinstance(l, nn.Conv2d):
                     t.nn.init.normal_(l.weight, std=0.01)
-                   # t.nn.init.constant_(l.bias, 0)
 
     def reset_parameters(self):
         nn.init.uniform_(self.row_embed.weight)

@@ -11,22 +11,12 @@ class TCTtest(nn.Module):
         super(TCTtest, self).__init__()
 
 
-        self.conv = nn.Sequential(
-            nn.Conv2d(384, 192, kernel_size=3, bias=False, stride=2,padding=1),
-            nn.BatchNorm2d(192),
-            nn.ReLU(inplace=True),
-            )
-        self.conv3 = nn.Sequential(
-            nn.Conv2d(384, 192, kernel_size=3, bias=False, stride=2,padding=1),
-            nn.BatchNorm2d(192),
-            nn.ReLU(inplace=True),
-            )
-        self.conv2 = nn.Sequential(
+        self.conv1 = nn.Sequential(
             nn.Conv2d(256, 192, kernel_size=3, bias=False, stride=2,padding=1),
             nn.BatchNorm2d(192),
             nn.ReLU(inplace=True),
             )
-        self.conv1 = nn.Sequential(
+        self.conv2 = nn.Sequential(
             nn.Conv2d(256, 192, kernel_size=3, bias=False, stride=2,padding=1),
             nn.BatchNorm2d(192),
             nn.ReLU(inplace=True),
@@ -67,7 +57,6 @@ class TCTtest(nn.Module):
                 )
 
         self.transformer = Transformertime(channel, 6, 1, 2)
-        self.baseembed=nn.Parameter(t.randn(1,192,11,11)).cuda()
         self.cls1=nn.Conv2d(channel, 2,  kernel_size=3, stride=1,padding=1)
         self.cls2=nn.Conv2d(channel, 1,  kernel_size=3, stride=1,padding=1)
         for modules in [self.conv1,self.conv2,self.conv3,self.convloc,self.convcls,self.cls1,self.cls2]:
