@@ -59,7 +59,7 @@ class TCTtest(nn.Module):
         self.transformer = Transformertime(channel, 6, 1, 2)
         self.cls1=nn.Conv2d(channel, 2,  kernel_size=3, stride=1,padding=1)
         self.cls2=nn.Conv2d(channel, 1,  kernel_size=3, stride=1,padding=1)
-        for modules in [self.conv1,self.conv2,self.conv3,self.convloc,self.convcls,self.cls1,self.cls2]:
+        for modules in [self.conv1,self.conv2,self.convloc,self.convcls,self.cls1,self.cls2]:
             for l in modules.modules():
                 if isinstance(l, nn.Conv2d):
                     t.nn.init.normal_(l.weight, std=0.01)
