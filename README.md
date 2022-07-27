@@ -30,6 +30,8 @@ pip install -r requirements.txt
 ```
 
 ## 2. Test
+
+### (a) TCTrack
 Download pretrained model by [Baidu](https://pan.baidu.com/s/1jSAcHY9OfarVlxKjOCrVEw) （code: 2u1l) or [Googledrive](https://drive.google.com/file/d/1nWRfvAEcSduR9A4W5MpyZBjp0SCjvmNk/view?usp=sharing) and put it into `tools/snapshot` directory.
 
 Download testing datasets and put them into `test_dataset` directory. 
@@ -44,9 +46,34 @@ The testing result will be saved in the `results/dataset_name/tracker_name` dire
 
 **Note:** The results of TCTrack can be [downloaded](https://pan.baidu.com/s/1-V4JbKvmVPm0aOKWTOQtyQ) (code:kh3e).
 
+### (b) TCTrack++
+Download pretrained model by [Googledrive](https://drive.google.com/file/d/1yHLZTPkU_Mko0OX03fd2HH01g0gflusI/view?usp=sharing) and put it into `tools/snapshot` directory.
+
+Download testing datasets and put them into `test_dataset` directory. 
+
+```bash 
+python ./tools/test.py     # offline evaluation                       
+	--dataset OTB100                  
+    --tracker_name TCTrack++
+	--snapshot snapshot/general_model.pth # pre-train model path
+
+```
+```bash 
+python ./tools/test_rt.py     # oneline evaluation                       
+	--dataset OTB100                  
+    --tracker_name TCTrack++
+	--snapshot snapshot/general_model.pth # pre-train model path
+```
+
+The testing result will be saved in the `results/dataset_name/tracker_name` directory.
+
+**Note:** The results of TCTrack++ can be [downloaded](https://drive.google.com/file/d/1cTw-kwL9h54PdBWi9eAPmqduoloW2AQu/view?usp=sharing).
+
 ## 3. Train
 
-### Prepare training datasets
+### (a) TCTrack
+
+#### Prepare training datasets
 
 Download the datasets：
 * [VID](http://image-net.org/challenges/LSVRC/2017/)
@@ -57,8 +84,21 @@ Download the datasets：
 **Note:** `train_dataset/dataset_name/readme.md` has listed detailed operations about how to generate training datasets.
 
 
+### (b) TCTrack
+
+#### Prepare training datasets
+
+Download the datasets：
+* [VID](http://image-net.org/challenges/LSVRC/2017/)
+* [Lasot](https://paperswithcode.com/dataset/lasot)
+* [GOT-10K](http://got-10k.aitestunion.com/downloads)
+* [COCO](http://cocodataset.org)
+
+**Note:** `train_dataset/dataset_name/readme.md` has listed detailed operations about how to generate training datasets.
+
+
 ### Train a model
-To train the TCTrack model, run `train.py` with the desired configs:
+To train the TCTrack and TCTrack++ model, run `train.py` with the desired configs:
 
 ```bash
 cd tools
