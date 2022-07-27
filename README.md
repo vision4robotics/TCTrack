@@ -59,7 +59,7 @@ python ./tools/test.py     # offline evaluation
 
 ```
 ```bash 
-python ./tools/test_rt.py     # oneline evaluation                       
+python ./tools/test_rt.py     # online evaluation                       
 	--dataset OTB100                  
     --tracker_name TCTrack++
 	--snapshot snapshot/general_model.pth # pre-train model path
