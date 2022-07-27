@@ -47,7 +47,7 @@ The testing result will be saved in the `results/dataset_name/tracker_name` dire
 **Note:** The results of TCTrack can be [downloaded](https://pan.baidu.com/s/1-V4JbKvmVPm0aOKWTOQtyQ) (code:kh3e).
 
 ### (b) TCTrack++
-Download pretrained model by [Googledrive](https://drive.google.com/file/d/1yHLZTPkU_Mko0OX03fd2HH01g0gflusI/view?usp=sharing) and put it into `tools/snapshot` directory.
+Download pretrained model by [baidu](https://pan.baidu.com/s/1aggubJ4F-YdMtEo7t0lYtw?pwd=dj2u) (code:dj2u) [Googledrive](https://drive.google.com/file/d/1yHLZTPkU_Mko0OX03fd2HH01g0gflusI/view?usp=sharing) and put it into `tools/snapshot` directory.
 
 Download testing datasets and put them into `test_dataset` directory. 
 
@@ -67,7 +67,7 @@ python ./tools/test_rt.py     # oneline evaluation
 
 The testing result will be saved in the `results/dataset_name/tracker_name` directory.
 
-**Note:** The results of TCTrack++ can be [downloaded](https://drive.google.com/file/d/1cTw-kwL9h54PdBWi9eAPmqduoloW2AQu/view?usp=sharing).
+**Note:** The results of TCTrack++ can be [downloaded](https://drive.google.com/file/d/1cTw-kwL9h54PdBWi9eAPmqduoloW2AQu/view?usp=sharing) or [downloaded](https://pan.baidu.com/s/17qwbOHeNCe6olBkK9aHK9Q?pwd=3vyx) (code: 3vyx).
 
 ## 3. Train
 
