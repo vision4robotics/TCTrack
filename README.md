@@ -83,11 +83,12 @@ python eval.py 	                          \
 ## References 
 
 ```
-@article{cao2022tctrack,
-  title={{TCTrack: Temporal Contexts for Aerial Tracking}},
-  author={Cao, Ziang and Huang, Ziyuan and Pan, Liang and Zhang, Shiwei and Liu, Ziwei and Fu, Changhong},
-  journal={arXiv preprint arXiv:2203.01885},
-  year={2022}
+@inproceedings{cao2022tctrack,
+	title={{TCTrack: Temporal Contexts for Aerial Tracking}},
+	author={Cao, Ziang and Huang, Ziyuan and Pan, Liang and Zhang, Shiwei and Liu, Ziwei and Fu, Changhong},
+	booktitle={CVPR},
+	pages={14798--14808},
+	year={2022}
 }
 
 ```
