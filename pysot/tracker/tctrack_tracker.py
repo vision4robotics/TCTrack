@@ -45,16 +45,7 @@ class TCTrackTracker(SiameseTracker):
         anchor[:,3]=np.maximum(1,h)
         return anchor
     
-    
-    def _convert_bbox(self, delta, anchor):
-        delta = delta.permute(1, 2, 3, 0).contiguous().view(4, -1)
-        delta = delta.data.cpu().numpy()
 
-        delta[0, :] = delta[0, :] * anchor[:, 2] + anchor[:, 0]
-        delta[1, :] = delta[1, :] * anchor[:, 3] + anchor[:, 1]
-        delta[2, :] = np.exp(delta[2, :]) * anchor[:, 2]
-        delta[3, :] = np.exp(delta[3, :]) * anchor[:, 3]
-        return delta
 
     def _convert_score(self, score):
         score = score.permute(1, 2, 3, 0).contiguous().view(2, -1).permute(1, 0)
@@ -110,7 +101,7 @@ class TCTrackTracker(SiameseTracker):
     def con(self, x):
         return  x*(cfg.TRAIN.SEARCH_SIZE//2)
 
-    def track(self, img):
+    def track(self, img,hp):
         """
         args:
             img(np.ndarray): BGR image
@@ -155,17 +146,17 @@ class TCTrackTracker(SiameseTracker):
         # aspect ratio penalty
         r_c = change((self.size[0]/(self.size[1]+1e-5)) /
                      (pred_bbox[2, :]/(pred_bbox[3, :]+1e-5)))
-        penalty = np.exp(-(r_c * s_c - 1) * cfg.TRACK.PENALTY_K)
+        penalty = np.exp(-(r_c * s_c - 1) * hp[0])
         pscore = penalty * score
 
         # window penalty
-        pscore = pscore * (1 - cfg.TRACK.WINDOW_INFLUENCE) + \
-            self.window * cfg.TRACK.WINDOW_INFLUENCE
+        pscore = pscore * (1 - hp[1]) + \
+            self.window * hp[1]
         best_idx = np.argmax(pscore)
         
         bbox = pred_bbox[:, best_idx] / scale_z
         
-        lr = penalty[best_idx] * score[best_idx] * cfg.TRACK.LR 
+        lr = penalty[best_idx] * score[best_idx] * hp[2] 
 
         cx = bbox[0] + self.center_pos[0]
         cy = bbox[1] + self.center_pos[1]

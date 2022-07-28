@@ -1,0 +1,86 @@
+META_ARC: "TCTrack_alexnet"
+
+BACKBONE:
+    TYPE: "temporalalexnet"
+    PRETRAINED:  'temporalalexnet.pth'      
+    TRAIN_LAYERS: ['block3','temporalconv1','b_f1','temporalconv2','b_f2'] 
+    Tempor_TRAIN_LAYERS: ['block3','temporalconv1','b_f1','temporalconv2','b_f2'] 
+    TRAIN_EPOCH: 10 
+    LAYERS_LR: 0.1
+
+TRACK:
+    TYPE: 'TCTracktracker'
+    EXEMPLAR_SIZE: 127
+    INSTANCE_SIZE: 287
+    CONTEXT_AMOUNT: 0.5 
+    STRIDE: 8
+    PENALTY_K: 0.0604
+    WINDOW_INFLUENCE: 0.4401
+    LR: 0.303
+
+    w2: 1.0
+    w3: 1.0
+
+TRAIN:
+    EPOCH: 100 
+    START_EPOCH: 0  
+    BATCH_SIZE: 140
+    videorange: 3
+    SEARCH_SIZE: 287
+    NUM_GPU: 2
+    BASE_LR: 0.005
+    RESUME: ''
+    WEIGHT_DECAY : 0.0001 
+    PRETRAINED: 0
+    OUTPUT_SIZE: 11
+    NUM_WORKERS: 8
+    LOC_WEIGHT: 3.0
+    CLS_WEIGHT: 1.2
+    w2: 1.0
+    w3: 1.0
+    w4: 1.0
+    w5: 1.0
+
+    POS_NUM : 16
+    TOTAL_NUM : 64
+    NEG_NUM : 16
+    LARGER: 1.0 
+    range : 1.0 
+    LR:
+        TYPE: 'log'
+        KWARGS:
+            start_lr: 0.01 
+            end_lr: 0.00005
+
+    LR_WARMUP:
+        TYPE: 'step'
+        EPOCH: 5 
+        KWARGS:
+            start_lr: 0.005
+            end_lr: 0.01
+            step: 1
+
+DATASET:
+    NAMES: 
+    - 'VID'   
+    - 'GOT'
+    - 'LaSOT'  
+
+
+
+    TEMPLATE:
+        SHIFT: 4 
+        SCALE: 0.05 
+        BLUR: 0.0
+        FLIP: 0.0 
+        COLOR: 1.0
+
+    SEARCH:
+        SHIFT: 64 
+        SCALE: 0.18 
+        BLUR: 0.2
+        FLIP: 0.0
+        COLOR: 1.0
+
+    NEG: 0.0 #0.05
+    GRAY: 0.0

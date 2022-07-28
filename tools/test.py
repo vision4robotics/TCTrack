@@ -12,23 +12,21 @@ import torch
 import numpy as np
 
 from pysot.core.config import cfg
-from pysot.models.utile.model_builder import ModelBuilder
+from pysot.models.utile_tctrack.model_builder import ModelBuilder_tctrack
+from pysot.models.utile_tctrackplus.model_builder import ModelBuilder_tctrackplus
 from pysot.tracker.tctrack_tracker import TCTrackTracker
+from pysot.tracker.tctrackplus_tracker import TCTrackplusTracker
 from pysot.utils.bbox import get_axis_aligned_bbox
 from pysot.utils.model_load import load_pretrain
 from toolkit.datasets import DatasetFactory
 
 
 parser = argparse.ArgumentParser(description='TCTrack tracking')
-parser.add_argument('--dataset', default='UAV123',type=str,
+parser.add_argument('--dataset', default='OTB100',type=str,
         help='datasets')
-parser.add_argument('--config', default='./experiments/config.yaml', type=str,
-        help='config file1')
 parser.add_argument('--tracker_name', default='TCTrack', type=str,
         help='tracker name')
-parser.add_argument('--config_l', default='./experiments/config_l.yaml', type=str,
-        help='config file2')
-parser.add_argument('--snapshot', default='./tools/snapshot/tctrack.pth', type=str,
+parser.add_argument('--snapshot', default='./tools/snapshot/checkpoint00_e88.pth', type=str,
         help='snapshot of models to eval')
 parser.add_argument('--video', default='', type=str,
         help='eval one special video')
@@ -40,22 +38,41 @@ torch.set_num_threads(1)
 
 def main():
 # load config
-    if args.dataset in ['UAV123','UAV123_10fps','DTB70']:
-        cfg.merge_from_file(args.config)
-	else:
-	    cfg.merge_from_file(args.config_l)
+    if args.tracker_name=="TCTrack":
+        if args.dataset in ['UAV123','UAV123_10fps','DTB70']:
+            cfg.merge_from_file(os.path.join('./experiments', args.tracker_name, 'config.yaml'))
+        else:
+            cfg.merge_from_file(os.path.join('./experiments', args.tracker_name, 'config_l.yaml'))
+        # create model
+        model = ModelBuilder_tctrack('test')
 
+        # load model
+        model = load_pretrain(model, args.snapshot).cuda().eval()
+
+        # build tracker
+        tracker = TCTrackTracker(model)
+        hp=[cfg.TRACK.PENALTY_K,cfg.TRACK.WINDOW_INFLUENCE,cfg.TRACK.LR]
+    
+    elif args.tracker_name=="TCTrack++":
+        cfg.merge_from_file(os.path.join('./experiments', args.tracker_name, 'config.yaml'))
+        # create model
+        model = ModelBuilder_tctrackplus('test')
+
+        # load model
+        model = load_pretrain(model, args.snapshot).cuda().eval()
+
+        # build tracker
+        tracker = TCTrackplusTracker(model)
+        hp=getattr(cfg.HP_SEARCH_TCTrackpp_offline,args.dataset)
+        
+    else:
+        print('No such tracker')
+    
+        
     cur_dir = os.path.dirname(os.path.realpath(__file__))
+    
     dataset_root = os.path.join(cur_dir, '../test_dataset', args.dataset)
-
-    # create model
-    model = ModelBuilder('test')
-
-    # load model
-    model = load_pretrain(model, args.snapshot).cuda().eval()
-
-    # build tracker
-    tracker = TCTrackTracker(model)
+    
 
     # create dataset
     dataset = DatasetFactory.create_dataset(name=args.dataset,
@@ -86,7 +103,7 @@ def main():
                 else:
                     pred_bboxes.append(pred_bbox)
             else:
-                outputs = tracker.track(img)
+                outputs = tracker.track(img,hp)
                 pred_bbox = outputs['bbox']
                 pred_bboxes.append(pred_bbox)
                 scores.append(outputs['best_score'])

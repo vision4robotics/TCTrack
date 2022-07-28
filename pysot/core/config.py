@@ -86,6 +86,9 @@ __C.TRAIN.w2=1.0
 
 __C.TRAIN.w3=1.0
 
+__C.TRAIN.videorangemax=3
+
+
 __C.TRAIN.w4=1.0
 
 __C.TRAIN.w5=1.0
@@ -276,3 +279,27 @@ __C.TRACK.MASK_THERSHOLD = 0.30
 
 # Mask output size
 __C.TRACK.MASK_OUTPUT_SIZE = 127
+
+__C.HP_SEARCH_TCTrackpp_online = CN()
+
+__C.HP_SEARCH_TCTrackpp_online.OTB100 = [0.142035, 0.404, 0.29948]
+
+__C.HP_SEARCH_TCTrackpp_online.GOT10K = [0.04, 0.44, 0.33]
+
+__C.HP_SEARCH_TCTrackpp_online.UAV123 = [0.04, 0.44, 0.33]
+
+__C.HP_SEARCH_TCTrackpp_online.LaSOT = [0.05, 0.44, 0.32]
+
+
+__C.HP_SEARCH_TCTrackpp_offline = CN()
+
+__C.HP_SEARCH_TCTrackpp_offline.OTB100 = [0.142035, 0.404, 0.29948]
+
+__C.HP_SEARCH_TCTrackpp_offline.UAV123_10fps = [0.0385143, 0.436205, 0.328106]
+
+__C.HP_SEARCH_TCTrackpp_offline.UAVTrack112 = [0.0579, 0.436, 0.323723]
+
+__C.HP_SEARCH_TCTrackpp_offline.DTB70 = [0.0346, 0.441, 0.328]
+
+__C.HP_SEARCH_TCTrackpp_offline.Visdrone2018 = [0.058, 0.437, 0.3235]
+

@@ -38,7 +38,7 @@ Download testing datasets and put them into `test_dataset` directory.
 
 ```bash 
 python ./tools/test.py                                
-	--dataset UAV123_10fps                  
+	--dataset OTB100                  
     --tracker_name TCTrack
 	--snapshot snapshot/general_model.pth # pre-train model path
 ```
@@ -105,12 +105,33 @@ cd tools
 python train.py
 ```
 
-## 4. Evaluation
+## 4. Offline Evaluation
 If you want to evaluate the results of our tracker, please put those results into  `results` directory.
 ```
 python eval.py 	                          \
 	--tracker_path ./results          \ # result path
-	--dataset UAV10fps                  \ # dataset_name
+	--dataset OTB100                  \ # dataset_name
+	--tracker_prefix 'general_model'   # tracker_name
+```
+
+## 5. Online Evaluation
+If you want to evaluate the results of our tracker, please put the pkl files into  `results_rt_raw` directory.
+
+
+```
+#first step
+
+python rt_eva.py 	                          \
+	--raw_root ./tools/results_rt_raw/OTB100          \ # pkl path
+	--tar_root ./tools/results_rt/OTB100                  \ # output txt files for evaluation
+	--gtroot ./test_dataset/OTB100   # groundtruth of dataset
+```
+
+```
+# second step
+python eval.py 	                          \
+	--tracker_path ./results          \ # result path
+	--dataset OTB100                  \ # dataset_name
 	--tracker_prefix 'general_model'   # tracker_name
 ```
 
