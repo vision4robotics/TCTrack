@@ -83,6 +83,13 @@ Download the datasets：
 
 **Note:** `train_dataset/dataset_name/readme.md` has listed detailed operations about how to generate training datasets.
 
+#### Train a model
+To train the TCTrack and TCTrack++ model, run `train.py` with the desired configs:
+
+```bash
+cd tools
+python train_tctrack.py
+```
 
 ### (b) TCTrack
 
@@ -96,13 +103,12 @@ Download the datasets：
 
 **Note:** `train_dataset/dataset_name/readme.md` has listed detailed operations about how to generate training datasets.
 
-
 ### Train a model
 To train the TCTrack and TCTrack++ model, run `train.py` with the desired configs:
 
 ```bash
 cd tools
-python train.py
+python train_tctrackpp.py
 ```
 
 ## 4. Offline Evaluation
