@@ -136,9 +136,9 @@ python rt_eva.py 	                          \
 ```
 # second step
 python eval.py 	                          \
-	--tracker_path ./results          \ # result path
+	--tracker_path ./results_rt          \ # result path
 	--dataset OTB100                  \ # dataset_name
-	--tracker_prefix 'general_model'   # tracker_name
+	--trackers TCTrack++   # tracker_name
 ```
 
 
