@@ -91,7 +91,7 @@ cd tools
 python train_tctrack.py
 ```
 
-### (b) TCTrack
+### (b) TCTrack++
 
 #### Prepare training datasets
 
