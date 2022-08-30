@@ -26,7 +26,7 @@ The implementation of our online temporally adaptive convolution is based on [Ta
 This code has been tested on Ubuntu 18.04, Python 3.8.3, Pytorch 0.7.0/1.6.0, CUDA 10.2.
 Please install related libraries before running this code: 
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
 ## 2. Test
