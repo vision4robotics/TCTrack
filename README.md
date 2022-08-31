@@ -67,7 +67,7 @@ python ./tools/test_rt.py     # online evaluation
 
 The testing result will be saved in the `results/dataset_name/tracker_name` directory.
 
-**Note:** The results of TCTrack++ can be [downloaded](https://drive.google.com/file/d/1cTw-kwL9h54PdBWi9eAPmqduoloW2AQu/view?usp=sharing) or [downloaded](https://pan.baidu.com/s/17qwbOHeNCe6olBkK9aHK9Q?pwd=3vyx) (code: 3vyx).
+**Note:** The results of TCTrack++ can be [downloaded](https://drive.google.com/file/d/1TaolHsyOy_zIkm-MEEkMZuOtbr_NuUYC/view?usp=sharing) or [downloaded](https://pan.baidu.com/s/1v7ie10TmFDiWKoosTESXTw?pwd=3vyx) (code: 3vyx).
 
 ## 3. Train
 
