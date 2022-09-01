@@ -8,7 +8,7 @@ sys.path.append("./")
 from glob import glob
 from tqdm import tqdm
 from multiprocessing import Pool
-from toolkit.datasets import OTBDataset，LaSOTDataset，UAVTrack112Dataset，UAV10Dataset,UAVDataset,DTB70Dataset,UAVTrack112lDataset
+from toolkit.datasets import OTBDataset, LaSOTDataset, UAVTrack112Dataset, UAV10Dataset, UAVDataset, UAVTrack112lDataset #DTB70Dataset
 from toolkit.evaluation import OPEBenchmark
 from toolkit.visualization import draw_success_precision
 
@@ -18,8 +18,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Single Object Tracking Evaluation')
     parser.add_argument('--dataset_dir', default='',type=str, help='dataset root directory')
     parser.add_argument('--dataset', default='OTB100',type=str, help='dataset name')
-    parser.add_argument('--tracker_result_dir',default='', type=str, help='tracker result root')
-    parser.add_argument('--trackers',default='general_model', nargs='+')
+    parser.add_argument('--tracker_path', default='', type=str, help='tracker result root')
+    parser.add_argument('--tracker_prefix', default='general_model', nargs='+')
     parser.add_argument('--vis', default='',dest='vis', action='store_true')
     parser.add_argument('--show_video_level', default='',dest='show_video_level', action='store_true')
     parser.add_argument('--num', default=1, type=int, help='number of processes to eval')
@@ -28,12 +28,13 @@ if __name__ == '__main__':
     tracker_dir = os.path.join(args.tracker_path, args.dataset)
     trackers = glob(os.path.join(args.tracker_path,
                                   args.dataset,
-                                  args.tracker_prefix+'*'))
+                                  args.tracker_prefix[0]+'*'))
+
     trackers = [x.split('/')[-1] for x in trackers]
 
 
     root = os.path.realpath(os.path.join(os.path.dirname(__file__),
-                             '../testing_dataset'))
+                             '../test_dataset'))
     root = os.path.join(root, args.dataset)
 
     trackers=args.tracker_prefix
@@ -88,7 +89,7 @@ if __name__ == '__main__':
                             videos=videos,
                             attr=attr,
                             precision_ret=precision_ret)
-	elif 'OTB100' in args.dataset:
+    elif 'OTB100' in args.dataset:
         dataset = OTBDataset(args.dataset, root)
         dataset.set_tracker(tracker_dir, trackers)
         benchmark = OPEBenchmark(dataset)
@@ -159,7 +160,7 @@ if __name__ == '__main__':
                             attr=attr,
                             precision_ret=precision_ret)
 
-	elif 'UAVTrack112_l' in args.dataset:
+    elif 'UAVTrack112_l' in args.dataset:
         dataset = UAVTrack112lDataset(args.dataset, root)
         dataset.set_tracker(tracker_dir, trackers)
         benchmark = OPEBenchmark(dataset)
@@ -182,8 +183,8 @@ if __name__ == '__main__':
                             videos=videos,
                             attr=attr,
                             precision_ret=precision_ret)
-							
-	elif 'UAVTrack112' in args.dataset:
+
+    elif 'UAVTrack112' in args.dataset:
         dataset = UAVTrack112Dataset(args.dataset, root)
         dataset.set_tracker(tracker_dir, trackers)
         benchmark = OPEBenchmark(dataset)
@@ -206,7 +207,7 @@ if __name__ == '__main__':
                             videos=videos,
                             attr=attr,
                             precision_ret=precision_ret)
-							
+
     else:
         print('benchmark error')
 
