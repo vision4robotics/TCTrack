@@ -20,7 +20,7 @@ from pysot.utils.model_load import load_pretrain
 torch.set_num_threads(1)
 
 parser = argparse.ArgumentParser(description='TCTrack demo')
-parser.add_argument('--config', type=str, default='../experiments/config.yaml', help='config file')
+parser.add_argument('--config', type=str, default='../experiments/TCTrack/config.yaml', help='config file')
 parser.add_argument('--snapshot', type=str, default='./snapshot/tctrack.pth', help='model name')
 parser.add_argument('--video_name', default='../test_dataset/sequence_name', type=str, help='videos or image files')
 args = parser.parse_args()
@@ -69,6 +69,7 @@ def main():
 
     # build tracker
     tracker = TCTrackTracker(model)
+	hp=[cfg.TRACK.PENALTY_K,cfg.TRACK.WINDOW_INFLUENCE,cfg.TRACK.LR] #cfg.TRACK.PENALTY_K,cfg.TRACK.WINDOW_INFLUENCE,cfg.TRACK.LR
 
     first_frame = True
     if args.video_name:
@@ -85,7 +86,7 @@ def main():
             tracker.init(frame, init_rect)
             first_frame = False
         else:
-            outputs = tracker.track(frame)
+            outputs = tracker.track(frame,hp)
             bbox = list(map(int, outputs['bbox']))
             cv2.rectangle(frame, (bbox[0], bbox[1]),
                           (bbox[0]+bbox[2], bbox[1]+bbox[3]),
