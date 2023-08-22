@@ -158,6 +158,14 @@ python eval.py 	                          \
 	year={2022}
 }
 
+@article{cao2023realworld,
+      title={Towards Real-World Visual Tracking with Temporal Contexts}, 
+      author={Ziang Cao and Ziyuan Huang and Liang Pan and Shiwei Zhang and Ziwei Liu and Changhong Fu},
+      journal={arXiv preprint arXiv:2308.10330},
+      year={2023},
+
+}
+
 ```
 
 ## Acknowledgement
