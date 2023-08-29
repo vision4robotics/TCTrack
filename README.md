@@ -4,7 +4,7 @@
 
 In CVPR, 2022.
 
-[[paper](https://arxiv.org/abs/2203.01885)]
+[[paper](https://arxiv.org/abs/2203.01885)] [[paper_journal](https://arxiv.org/abs/2308.10330)]
 
 ## Abstract
 Temporal contexts among consecutive frames are far
@@ -158,12 +158,12 @@ python eval.py 	                          \
 	year={2022}
 }
 
-@article{cao2023realworld,
-      title={Towards Real-World Visual Tracking with Temporal Contexts}, 
-      author={Ziang Cao and Ziyuan Huang and Liang Pan and Shiwei Zhang and Ziwei Liu and Changhong Fu},
-      journal={arXiv preprint arXiv:2308.10330},
-      year={2023},
-
+@article{cao2023towards,
+  title={Towards Real-World Visual Tracking with Temporal Contexts},
+  author={Cao, Ziang and Huang, Ziyuan and Pan, Liang and Zhang, Shiwei and Liu, Ziwei and Fu, Changhong},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2023},
+  publisher={IEEE}
 }
 
 ```
